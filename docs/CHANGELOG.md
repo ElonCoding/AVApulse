@@ -9,3 +9,4 @@
 - [2026-11-06 16:31:35] refactor(wallet): enhance error reporting during Fuji network switch
 - [2026-11-06 16:31:35] chore(deps): audit dependencies for clean deployment on Avalanche C-Chain
 - [2026-11-06 16:31:36] docs(security): elaborate on transient ACL lifecycles in threat model
+- [2026-11-06 16:31:36] feat(frontend): enhance employee dashboard balance card layout
