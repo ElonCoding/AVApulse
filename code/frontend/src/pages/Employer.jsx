@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { ethers } from 'ethers';
 import { useWallet } from '../context/WalletContext';
 import { CONTRACTS, EXPLORER_URL } from '../config/contracts';
-import { createEthersHandleClient } from '@iexec-nox/handle';
+import { createAvalancheHandleClient as createEthersHandleClient } from '../services/avalancheHandle';
 
 // Fee overrides for Avalanche Fuji — prevents MetaMask fee estimation issues
 const TX_OVERRIDES = {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ethers } from 'ethers';
 import { useWallet } from '../context/WalletContext';
-import { createEthersHandleClient } from '@iexec-nox/handle';
+import { createAvalancheHandleClient as createEthersHandleClient } from '../services/avalancheHandle';
 
 export default function Auditor() {
   const { account, signer, isCorrectChain, getReadContract, connect } = useWallet();
