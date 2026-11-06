@@ -5,3 +5,4 @@
 - [2026-11-06 16:31:34] style(contracts): enforce consistent NatSpec formatting in ConfPayToken
 - [2026-11-06 16:31:34] perf(frontend): streamline handle caching in local state store
 - [2026-11-06 16:31:35] fix(config): ensure explicit chain 43113 parameters across scripts
+- [2026-11-06 16:31:35] docs(api): document onConfidentialTransferReceived callback lifecycle
