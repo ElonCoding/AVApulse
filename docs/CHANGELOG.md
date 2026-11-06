@@ -43,3 +43,4 @@
 - [2026-11-06 16:31:42] style(docs): format markdown tables and section headings
 - [2026-11-06 16:31:42] feat(frontend): display live block explorer links on confirmation
 - [2026-11-06 16:31:42] docs(readme): include detailed directory tree of codebase
+- [2026-11-06 16:31:42] perf(contracts): optimize storage access in isViewer check
