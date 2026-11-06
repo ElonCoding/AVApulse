@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { EXPLORER_URL } from '../config/contracts';
-import SpatialScene from '../components/SpatialScene';
 
 export default function Home() {
   return (
     <div className="home-container">
-      <SpatialScene height="260px" />`n      <div className="hero" style={{ marginTop: "1rem" }}>
+      <div className="hero">
         <div className="badge">
-          <span className="badge-icon">🛡️</span>
+          <span className="badge-icon">⚡</span>
           Built on iExec Nox Protocol · ERC-7984
         </div>
         <h1 className="hero-title">
@@ -59,7 +58,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                0x155b…3a00
+                0x968C…0038
               </a>
             </li>
             <li className="tx-item">
@@ -70,7 +69,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                0x08A1…BBa6
+                0x03D4…34Fa
               </a>
             </li>
             <li className="tx-item">
@@ -81,7 +80,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                0x0fA9…31D2
+                0xC247…0635
               </a>
             </li>
           </ul>
@@ -97,7 +96,7 @@ export default function Home() {
           <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
             <p><strong style={{ color: 'var(--text-primary)' }}>1. Wrap</strong> — ERC-20 tokens lock in the wrapper, producing an encrypted ERC-7984 handle.</p>
             <p style={{ marginTop: '0.5rem' }}><strong style={{ color: 'var(--text-primary)' }}>2. Pay</strong> — Employer calls <code style={{ color: 'var(--accent)' }}>batchPay()</code> with encrypted amounts. Nobody sees individual salaries.</p>
-            <p style={{ marginTop: '0.5rem' }}><strong style={{ color: 'var(--text-primary)' }}>3. Decrypt</strong> — Only the employee (or a granted auditor) can decrypt their payment handle via Nox TEE.</p>
+            <p style={{ marginTop: '0.5rem' }}><strong style={{ color: 'var(--text-primary)' }}>3. Decrypt</strong> — Only the employee (or a granted auditor) can decrypt their payment handle.</p>
             <p style={{ marginTop: '0.5rem' }}><strong style={{ color: 'var(--text-primary)' }}>4. Unwrap</strong> — Employee converts confidential tokens back to standard ERC-20.</p>
           </div>
         </div>
