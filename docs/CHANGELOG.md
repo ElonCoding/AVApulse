@@ -19,3 +19,4 @@
 - [2026-11-06 16:31:37] fix(scripts): set optimal default gas limit for Avalanche deployments
 - [2026-11-06 16:31:37] feat(auditor): add summary statistics display in auditor view
 - [2026-11-06 16:31:37] test(payroll): test employee removal and swap-and-pop array integrity
+- [2026-11-06 16:31:38] docs(readme): add quickstart verification terminal command
