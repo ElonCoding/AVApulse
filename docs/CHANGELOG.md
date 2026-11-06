@@ -14,3 +14,4 @@
 - [2026-11-06 16:31:36] test(fuji): verify unwrap requester validation in on-chain tests
 - [2026-11-06 16:31:36] docs(deployment): add step-by-step verification instructions
 - [2026-11-06 16:31:37] refactor(contracts): simplify event emission parameters for recordPayments
+- [2026-11-06 16:31:37] perf(frontend): reduce redundant re-renders in Employer management view
