@@ -11,3 +11,4 @@
 - [2026-11-06 16:31:36] docs(security): elaborate on transient ACL lifecycles in threat model
 - [2026-11-06 16:31:36] feat(frontend): enhance employee dashboard balance card layout
 - [2026-11-06 16:31:36] style(css): adjust visual hierarchy and contrast in dark theme
+- [2026-11-06 16:31:36] test(fuji): verify unwrap requester validation in on-chain tests
