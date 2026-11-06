@@ -2,3 +2,4 @@
 - [2026-11-06 16:31:34] test(compute): add test cases for arithmetic safeAdd on Avalanche Fuji
 - [2026-11-06 16:31:34] docs(readme): expand protocol overview and value proposition section
 - [2026-11-06 16:31:34] feat(payroll): optimize batch array length assertion logic
+- [2026-11-06 16:31:34] style(contracts): enforce consistent NatSpec formatting in ConfPayToken
