@@ -46,3 +46,4 @@
 - [2026-11-06 16:31:42] perf(contracts): optimize storage access in isViewer check
 - [2026-11-06 16:31:42] refactor(scripts): add automated confirmation logging to deploy scripts
 - [2026-11-06 16:31:43] docs(deployment): document snowtrace API verification flags
+- [2026-11-06 16:31:43] style(frontend): smooth badge transitions on role selection
