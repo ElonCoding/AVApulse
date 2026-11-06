@@ -1,0 +1,1 @@
+- [2026-11-06 16:31:33] refactor(core): refine AvalancheNoxCompute handle generation mechanics
