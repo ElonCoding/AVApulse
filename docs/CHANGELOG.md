@@ -33,3 +33,4 @@
 - [2026-11-06 16:31:40] feat(frontend): add tooltip explaining confidential balance handles
 - [2026-11-06 16:31:40] docs(architecture): diagram handle transformation lifecycle
 - [2026-11-06 16:31:40] test(contracts): verify zero address assertions on initialization
+- [2026-11-06 16:31:40] style(contracts): standardize variable naming conventions in PayrollManager
