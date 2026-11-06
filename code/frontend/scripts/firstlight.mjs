@@ -19,7 +19,7 @@ const REPORT_PATH = resolve(__dirname, '../../../reports/phase-5a-firstlight.md'
 
 // ─── Config ───────────────────────────────────────────────────────────
 const RPC = 'https://api.avax-test.network/ext/bc/C/rpc';
-const EMPLOYER_KEY = '0xefe85d40ec364e6fa637232bc9ce2f60f5d7c586da090b50ca6b60dd72cd15ea';
+const EMPLOYER_KEY = process.env.PRIVATE_KEY || '';
 
 const ADDRESSES = {
   MockERC20:      '0x155b9eee80e9f89f0594953bb9B9554d8b653a00',
