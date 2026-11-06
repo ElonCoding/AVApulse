@@ -1,6 +1,6 @@
 export const CONTRACTS = {
   "MockERC20": {
-    "address": "0x155b9eee80e9f89f0594953bb9B9554d8b653a00",
+    "address": "0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038",
     "abi": [
       {
         "inputs": [
@@ -347,7 +347,7 @@ export const CONTRACTS = {
     ]
   },
   "ConfPayToken": {
-    "address": "0x08A1ABF57C949Db12848bE205498f492e9b5BBa6",
+    "address": "0x03D47783137398bafF49B441dF063016984234Fa",
     "abi": [
       {
         "inputs": [
@@ -1165,7 +1165,7 @@ export const CONTRACTS = {
     ]
   },
   "PayrollManager": {
-      "address": "0xe3A2240060e1f52D84d8acE41dBb908aF53B3825",
+      "address": "0xC247661F01b9c5aFCe6C2CA0bcB8Fc6273680635",
       "abi": [
           {
               "inputs": [

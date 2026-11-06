@@ -54,7 +54,7 @@ export default function Home() {
               <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>MockERC20</span>
               <a
                 className="tx-hash"
-                href={`${EXPLORER_URL}/address/0x155b9eee80e9f89f0594953bb9B9554d8b653a00`}
+                href={`${EXPLORER_URL}/address/0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -65,7 +65,7 @@ export default function Home() {
               <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>VeilrollToken (ERC-7984)</span>
               <a
                 className="tx-hash"
-                href={`${EXPLORER_URL}/address/0x08A1ABF57C949Db12848bE205498f492e9b5BBa6`}
+                href={`${EXPLORER_URL}/address/0x03D47783137398bafF49B441dF063016984234Fa`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -76,7 +76,7 @@ export default function Home() {
               <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>PayrollManager</span>
               <a
                 className="tx-hash"
-                href={`${EXPLORER_URL}/address/0xe3A2240060e1f52D84d8acE41dBb908aF53B3825`}
+                href={`${EXPLORER_URL}/address/0xC247661F01b9c5aFCe6C2CA0bcB8Fc6273680635`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

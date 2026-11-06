@@ -6,8 +6,8 @@ async function main() {
   console.log("Account balance:", hre.ethers.formatEther(await hre.ethers.provider.getBalance(deployer.address)), "ETH");
 
   // Phase 1 contract addresses (deployed on Avalanche Fuji)
-  const MOCK_ERC20_ADDR = "0x155b9eee80e9f89f0594953bb9B9554d8b653a00";
-  const CONF_PAY_TOKEN_ADDR = "0x08A1ABF57C949Db12848bE205498f492e9b5BBa6";
+  const MOCK_ERC20_ADDR = "0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038";
+  const CONF_PAY_TOKEN_ADDR = "0x03D47783137398bafF49B441dF063016984234Fa";
 
   // Get contract instances
   const mockERC20 = await hre.ethers.getContractAt("MockERC20", MOCK_ERC20_ADDR);

@@ -1,16 +1,16 @@
 {
   "network": "avalanche-fuji",
   "chainId": 43113,
-  "deployer": "0x31f4a2E4b4dF8c46c466076cbf56fb1037899198",
+  "deployer": "0x3D95ee72e01C793d097AE7aa9177d80Fd3dC7a6a",
   "contracts": {
     "MockERC20": {
-      "address": "0x155b9eee80e9f89f0594953bb9B9554d8b653a00",
+      "address": "0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038",
       "deployedAt": "2026-04-29T16:50:00Z",
       "status": "active",
       "notes": "Standard ERC-20 with public mint(). Test token."
     },
     "ConfPayToken": {
-      "address": "0x08A1ABF57C949Db12848bE205498f492e9b5BBa6",
+      "address": "0x03D47783137398bafF49B441dF063016984234Fa",
       "deployedAt": "2026-04-29T16:51:00Z",
       "status": "active",
       "notes": "ERC-7984 Wrapper. Wraps MockERC20 into confidential token."
@@ -30,7 +30,7 @@
       "deprecatedReason": "Used confidentialTransferFrom external overload but proof validation still failed ('App mismatch' / 'Owner mismatch') due to msg.sender chain in Nox library calls."
     },
     "PayrollManager_v3": {
-      "address": "0xe3A2240060e1f52D84d8acE41dBb908aF53B3825",
+      "address": "0xC247661F01b9c5aFCe6C2CA0bcB8Fc6273680635",
       "deployedAt": "2026-04-30T04:39:51Z",
       "status": "active",
       "notes": "Final architecture: bookkeeping + auditor registry only. Employer calls ConfPayToken.confidentialTransfer directly, then recordPayments here. Auditor ACL via employer's direct NoxCompute.allow calls."
@@ -38,7 +38,7 @@
   },
   "infrastructure": {
     "NoxCompute": {
-      "address": "0xd464B198f06756a1d00be223634b85E0a731c229",
+      "address": "0xe0493eE9fE6513e5ddc3aa3Cc50845FD0591D428",
       "source": "iExec-managed (hardcoded in Nox.sol for chain 43113)",
       "notes": "Not deployed by us. Used for ACL allow/isAllowed and validateInputProof."
     }
@@ -51,7 +51,7 @@
     "metaMaskAccounts": {
       "employer": {
         "role": "Employer (deployer/owner)",
-        "address": "0x31f4a2E4b4dF8c46c466076cbf56fb1037899198",
+        "address": "0x3D95ee72e01C793d097AE7aa9177d80Fd3dC7a6a",
         "metaMaskIndex": "Account 1 (or whichever holds deployer key)",
         "notes": "Must be contract owner. Must have ≥0.005 ETH + mUSDC."
       },
