@@ -17,3 +17,4 @@
 - [2026-11-06 16:31:37] perf(frontend): reduce redundant re-renders in Employer management view
 - [2026-11-06 16:31:37] docs(architecture): describe ERC20ToERC7984Wrapper escrow architecture
 - [2026-11-06 16:31:37] fix(scripts): set optimal default gas limit for Avalanche deployments
+- [2026-11-06 16:31:37] feat(auditor): add summary statistics display in auditor view
