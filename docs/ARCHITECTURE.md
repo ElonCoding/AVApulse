@@ -22,3 +22,4 @@ Native compute engine deployed directly to Avalanche Fuji (`0xe0493eE9fE6513e5dd
 - Validates transient (`allowTransient`) and persistent (`allow`) permissions.
 - Implements deterministic handle arithmetic (`add`, `sub`, `safeAdd`, etc.).
 - Verifies unwrap decryption proofs.
+

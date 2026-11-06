@@ -23,3 +23,4 @@ Records confidential transaction handles emitted during employer direct transfer
 
 ### `grantAuditorAccess(address auditor)`
 Authorizes an auditor address to inspect employee payment history on-chain.
+

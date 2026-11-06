@@ -23,3 +23,4 @@ Deployments must be executed in exact dependency order:
    ```bash
    npx hardhat run scripts/deploy-payroll.js --network avalancheFuji
    ```
+
