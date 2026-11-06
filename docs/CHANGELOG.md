@@ -34,3 +34,4 @@
 - [2026-11-06 16:31:40] docs(architecture): diagram handle transformation lifecycle
 - [2026-11-06 16:31:40] test(contracts): verify zero address assertions on initialization
 - [2026-11-06 16:31:40] style(contracts): standardize variable naming conventions in PayrollManager
+- [2026-11-06 16:31:40] perf(frontend): memoize contract instance getters in WalletContext
