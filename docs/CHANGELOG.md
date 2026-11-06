@@ -27,3 +27,4 @@
 - [2026-11-06 16:31:39] perf(contracts): optimize loop gas usage in AvalancheNoxCompute validateAllowedForAll
 - [2026-11-06 16:31:39] docs(security): clarify auditor sandboxing and non-custodial boundaries
 - [2026-11-06 16:31:39] test(fuji): add assertions for inferredTotalSupply consistency
+- [2026-11-06 16:31:39] style(frontend): refine button loading spinner alignment
