@@ -15,3 +15,4 @@
 - [2026-11-06 16:31:36] docs(deployment): add step-by-step verification instructions
 - [2026-11-06 16:31:37] refactor(contracts): simplify event emission parameters for recordPayments
 - [2026-11-06 16:31:37] perf(frontend): reduce redundant re-renders in Employer management view
+- [2026-11-06 16:31:37] docs(architecture): describe ERC20ToERC7984Wrapper escrow architecture
