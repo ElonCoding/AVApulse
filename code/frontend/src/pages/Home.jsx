@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { EXPLORER_URL } from '../config/contracts';
+import SpatialScene from '../components/SpatialScene';
 
 export default function Home() {
   return (
     <div className="home-container">
-      <div className="hero">
+      <SpatialScene height="260px" />`n      <div className="hero" style={{ marginTop: "1rem" }}>
         <div className="badge">
           <span className="badge-icon">🛡️</span>
           Built on iExec Nox Protocol · ERC-7984
