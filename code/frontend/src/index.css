@@ -510,3 +510,74 @@ code, pre, .font-mono {
   color: #f59e0b;
   border-color: #452a0a;
 }
+
+/* Inputs & Forms - Vercel clean align */
+.input-field {
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  background: #000000;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* List styling & alignments */
+.employee-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.employee-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background: #050505;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.employee-address {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.825rem;
+  color: #ededed;
+  font-weight: 500;
+}
+
+/* Action button overrides */
+.btn-success {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #cccccc;
+  border-color: #cccccc;
+}
