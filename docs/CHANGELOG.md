@@ -1,1 +1,2 @@
 - [2026-11-06 16:31:33] refactor(core): refine AvalancheNoxCompute handle generation mechanics
+- [2026-11-06 16:31:34] test(compute): add test cases for arithmetic safeAdd on Avalanche Fuji
