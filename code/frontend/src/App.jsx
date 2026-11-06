@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Employer from './pages/Employer';
 import Employee from './pages/Employee';
 import Auditor from './pages/Auditor';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default function App() {
   return (
@@ -14,14 +15,14 @@ export default function App() {
         <BrowserRouter>
           <div className="app-container">
             <Navbar />
-            <main className="main-content">
+            <main className="main-content">`n            <ErrorBoundary>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/employer" element={<Employer />} />
                 <Route path="/employee" element={<Employee />} />
                 <Route path="/auditor" element={<Auditor />} />
               </Routes>
-            </main>
+                        </ErrorBoundary>`n          </main>
           </div>
         </BrowserRouter>
       </ToastProvider>
