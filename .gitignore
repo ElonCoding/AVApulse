@@ -1,0 +1,59 @@
+# ========================
+# Dependencies
+# ========================
+node_modules/
+
+# ========================
+# Environment / Secrets
+# ========================
+.env
+.env.local
+.env.*.local
+
+# ========================
+# Build Output
+# ========================
+dist/
+dist-ssr/
+out/
+build/
+
+# ========================
+# Hardhat
+# ========================
+code/artifacts/
+code/cache/
+code/.vscode_hardhat_config*
+
+# ========================
+# Logs
+# ========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ========================
+# OS Files
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# Editor / IDE
+# ========================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.local
+
+
+# ========================
+# Sensitive Scripts
+# ========================
+code/frontend/scripts/pre-record-check.mjs
