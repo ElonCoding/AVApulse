@@ -25,3 +25,4 @@
 - [2026-11-06 16:31:38] docs(api): detail grantAuditorAccess and revokeAuditorAccess methods
 - [2026-11-06 16:31:38] feat(frontend): add network badge status indicator on navbar
 - [2026-11-06 16:31:39] perf(contracts): optimize loop gas usage in AvalancheNoxCompute validateAllowedForAll
+- [2026-11-06 16:31:39] docs(security): clarify auditor sandboxing and non-custodial boundaries
