@@ -29,3 +29,4 @@
 - [2026-11-06 16:31:39] test(fuji): add assertions for inferredTotalSupply consistency
 - [2026-11-06 16:31:39] style(frontend): refine button loading spinner alignment
 - [2026-11-06 16:31:39] docs(readme): update system architecture flow descriptions
+- [2026-11-06 16:31:40] refactor(scripts): modularize deploy-compute contract factory initialization
