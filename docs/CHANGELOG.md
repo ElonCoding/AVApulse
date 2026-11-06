@@ -45,3 +45,4 @@
 - [2026-11-06 16:31:42] docs(readme): include detailed directory tree of codebase
 - [2026-11-06 16:31:42] perf(contracts): optimize storage access in isViewer check
 - [2026-11-06 16:31:42] refactor(scripts): add automated confirmation logging to deploy scripts
+- [2026-11-06 16:31:43] docs(deployment): document snowtrace API verification flags
