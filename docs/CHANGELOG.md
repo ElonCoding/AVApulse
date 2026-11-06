@@ -39,3 +39,4 @@
 - [2026-11-06 16:31:41] fix(frontend): guard against unmounted state updates during async calls
 - [2026-11-06 16:31:41] docs(security): document cryptographic assumptions and random salt entropy
 - [2026-11-06 16:31:41] refactor(frontend): standardize notification toast messaging
+- [2026-11-06 16:31:41] test(fuji): add script check for MockERC20 public mint permissions
