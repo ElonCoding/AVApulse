@@ -3,3 +3,4 @@
 - [2026-11-06 16:31:34] docs(readme): expand protocol overview and value proposition section
 - [2026-11-06 16:31:34] feat(payroll): optimize batch array length assertion logic
 - [2026-11-06 16:31:34] style(contracts): enforce consistent NatSpec formatting in ConfPayToken
+- [2026-11-06 16:31:34] perf(frontend): streamline handle caching in local state store
