@@ -357,7 +357,7 @@ export default function Employer() {
           </div>
           <div className="stat-card" style={{ marginBottom: '1rem' }}>
             <div className="stat-label">Confidential Balance Handle</div>
-            <div className="stat-value encrypted">{confBalance && confBalance !== '0' ? confBalance : 'No balance'}</div>
+            <div className="handle-display" style={{ marginTop: "0.5rem" }}>{confBalance && confBalance !== "0" ? confBalance : "No balance"}</div>
           </div>
           <button className="btn btn-secondary btn-sm" onClick={handleMint} disabled={loading.mint} style={{ marginRight: '0.5rem' }}>
             {loading.mint ? <><span className="spinner"></span> Minting…</> : '🪙 Mint 10k mUSDC'}
