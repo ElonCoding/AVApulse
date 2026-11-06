@@ -37,3 +37,4 @@
 - [2026-11-06 16:31:40] perf(frontend): memoize contract instance getters in WalletContext
 - [2026-11-06 16:31:41] docs(api): add parameter descriptions for finalizeUnwrap proof structure
 - [2026-11-06 16:31:41] fix(frontend): guard against unmounted state updates during async calls
+- [2026-11-06 16:31:41] docs(security): document cryptographic assumptions and random salt entropy
