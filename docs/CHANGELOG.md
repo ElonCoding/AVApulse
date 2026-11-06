@@ -21,3 +21,4 @@
 - [2026-11-06 16:31:37] test(payroll): test employee removal and swap-and-pop array integrity
 - [2026-11-06 16:31:38] docs(readme): add quickstart verification terminal command
 - [2026-11-06 16:31:38] refactor(frontend): improve transaction hash link formatting for Snowtrace
+- [2026-11-06 16:31:38] style(contracts): format error definitions with custom revert signatures
