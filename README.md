@@ -1,96 +1,141 @@
-<p align="center">
-  <h1 align="center">⚡ AVApulse</h1>
-  <p align="center"><strong>Confidential Payroll on Avalanche</strong></p>
-  <p align="center">
-    Pay your team with encrypted amounts. Only authorized parties can decrypt.<br/>
-    Built with <a href="https://protocol.iex.ec/">iExec Nox Protocol</a> · <a href="https://eips.ethereum.org/EIPS/eip-7984">ERC-7984</a> · Avalanche Fuji
-  </p>
-</p>
+# AVApulse: Confidential Payroll Protocol on Avalanche Fuji
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Solidity-^0.8.28-363636?logo=solidity" alt="Solidity" />
-  <img src="https://img.shields.io/badge/Hardhat-2.x-yellow?logo=hardhat" alt="Hardhat" />
-  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react" alt="React" />
-  <img src="https://img.shields.io/badge/Network-Avalanche%20Fuji-E84142?logo=avalanche" alt="Network" />
-  <img src="https://img.shields.io/badge/ERC-7984-green" alt="ERC-7984" />
-</p>
+> Built by **ElonCoding** | Native ERC-7984 Confidential Layer on Avalanche C-Chain
 
 ---
 
-## The Problem
+## ⚡ Overview
 
-On-chain payroll is transparent by default. Every salary, every bonus, every payment amount is publicly visible to anyone with a block explorer. Companies can't use blockchain payroll without exposing compensation data to competitors, employees seeing each other's pay, or the entire world.
-
-## The Solution
-
-**AVApulse** wraps standard ERC-20 tokens into **ERC-7984 confidential tokens** using iExec's Nox Protocol. Salary amounts are encrypted on-chain as opaque `bytes32` handles — nobody watching the blockchain can see how much was paid. Only authorized parties (the employee, or an employer-approved auditor) can decrypt specific amounts.
-
-### 🔒 Key Differentiator: Selective Auditor Disclosure
-
-> The employer can grant an external auditor **read-only access** to specific payment handles via on-chain ACL. The auditor can decrypt individual salaries for compliance verification — without employees publicly revealing their compensation, and without the employer emailing a CSV.
-
-This demonstrates the **core value proposition of confidential tokens**: privacy with selective, verifiable, on-chain disclosure.
+**AVApulse** solves the public compensation paradox in Web3. Public blockchains expose salaries, bonuses, and contractor payments to the entire world. AVApulse leverages **ERC-7984 confidential token wrapping** paired with **on-chain ACL computation (AvalancheNoxCompute)** on Avalanche Fuji to deliver completely private balances and encrypted payouts with selective, regulatory-compliant auditor disclosure.
 
 ---
 
-## Architecture
+## 🏗️ System Architecture
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                   FRONTEND (Vite + React + ethers v6)        │
-│                                                              │
-│  ┌────────────────┐  ┌────────────────┐  ┌──────────────┐   │
-│  │ 🏢 Employer    │  │ 👤 Employee   │  │ 🔍 Auditor   │   │
-│  │ - Wrap tokens  │  │ - Decrypt bal  │  │ - Decrypt    │   │
-│  │ - Batch pay    │  │ - Unwrap ERC20 │  │   payments   │   │
-│  │ - Grant audit  │  │                │  │ - Read-only  │   │
-│  └───────┬────────┘  └───────┬────────┘  └──────────────┘   │
-│          │     @iexec-nox/handle SDK      │                  │
-└──────────┼────────────────────────────────┼──────────────────┘
-           │                   │
-           ▼                   ▼
-┌──────────────────────────────────────────┐
-│          AVALANCHE FUJI (Chain 43113)    │
-│                                          │
-│  MockERC20      ConfPayToken (ERC-7984)  │
-│  PayrollManager                          │
-│  NoxCompute (ACL + TEE gateway)          │
-└──────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Client ["Client Layer (Frontend)"]
+        Employer["🏢 Employer UI"]
+        Employee["👤 Employee UI"]
+        Auditor["🔍 Auditor UI"]
+        HandleClient["⚡ AvalancheHandleClient<br/>(Client-Side Proof & Cipher)"]
+    end
+
+    subgraph Avalanche ["Avalanche Fuji (Chain 43113)"]
+        MockUSDC["💵 MockERC20 (mUSDC)<br/>0x968C...0038"]
+        ConfPay["🛡️ ConfPayToken (ERC-7984)<br/>0x03D4...34Fa"]
+        PayrollMgr["📋 PayrollManager<br/>0xC247...0635"]
+        Compute["⚙️ AvalancheNoxCompute (ACL & Proofs)<br/>0xe049...D428"]
+    end
+
+    Employer -->|1. Wrap Tokens| ConfPay
+    ConfPay -->|Hold Collateral| MockUSDC
+    Employer -->|2. Batch Confidential Pay| ConfPay
+    Employer -->|3. Register Handles| PayrollMgr
+    Employee -->|4. Decrypt / Unwrap| ConfPay
+    Auditor -->|5. Audit Disclosure| PayrollMgr
+    ConfPay -.->|ACL & State Compute| Compute
+    PayrollMgr -.->|Access Verification| Compute
+    HandleClient <---> Client
 ```
 
 ---
 
-## Deployed Contracts (Avalanche Fuji)
+## 🔄 Confidential Batch Payroll Lifecycle
 
-| Contract | Address |
-|----------|---------|
-| MockERC20 | `0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038` |
-| ConfPayToken (ERC-7984) | `0x03D47783137398bafF49B441dF063016984234Fa` |
-| PayrollManager | `0xC247661F01b9c5aFCe6C2CA0bcB8Fc6273680635` |
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Employer as 🏢 Employer
+    participant ConfPay as 🛡️ ConfPayToken
+    participant Payroll as 📋 PayrollManager
+    participant Compute as ⚙️ AvalancheNoxCompute
+    actor Employee as 👤 Employee
+    actor Auditor as 🔍 Auditor
 
-> See [`deployments/avalanche-fuji.json`](deployments/avalanche-fuji.json) for full deployment details.
+    Employer->>ConfPay: wrap(amount)
+    ConfPay->>Compute: wrapAsPublicHandle()
+    ConfPay-->>Employer: Encrypted CPAY Handle
+    
+    Employer->>ConfPay: confidentialTransfer(employee, encryptedHandle)
+    ConfPay->>Compute: allowTransient() & transfer()
+    
+    Employer->>Payroll: recordPayments([employees], [handles])
+    Payroll-->>Payroll: Store Handles for Payees
+    
+    Employee->>ConfPay: unwrap(amount)
+    ConfPay->>Compute: allowPublicDecryption()
+    Employee->>ConfPay: finalizeUnwrap(proof)
+    ConfPay-->>Employee: Plaintext Mock USDC Transferred
+
+    Employer->>Payroll: grantAuditorAccess(auditor)
+    Auditor->>Payroll: getPaymentHandle(employee, index)
+    Auditor->>Compute: isViewer(handle, auditor)
+    Compute-->>Auditor: Verified View Access
+```
 
 ---
 
-## Getting Started
+## 📜 Deployed Contracts on Avalanche Fuji
 
-### Prerequisites
+| Contract | Address | Network | Explorer |
+| :--- | :--- | :--- | :--- |
+| **MockERC20 (mUSDC)** | `0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038` | Avalanche Fuji (43113) | [Snowtrace](https://testnet.snowtrace.io/address/0x968C84e7549020fF4dA1c6E2B0fc459f2ED90038) |
+| **ConfPayToken (CPAY)** | `0x03D47783137398bafF49B441dF063016984234Fa` | Avalanche Fuji (43113) | [Snowtrace](https://testnet.snowtrace.io/address/0x03D47783137398bafF49B441dF063016984234Fa) |
+| **PayrollManager** | `0xC247661F01b9c5aFCe6C2CA0bcB8Fc6273680635` | Avalanche Fuji (43113) | [Snowtrace](https://testnet.snowtrace.io/address/0xC247661F01b9c5aFCe6C2CA0bcB8Fc6273680635) |
+| **AvalancheNoxCompute**| `0xe0493eE9fE6513e5ddc3aa3Cc50845FD0591D428` | Avalanche Fuji (43113) | [Snowtrace](https://testnet.snowtrace.io/address/0xe0493eE9fE6513e5ddc3aa3Cc50845FD0591D428) |
 
-- **Node.js** ≥ 18
-- **MetaMask** browser extension
-- **Avalanche Fuji AVAX** — get from [Avalanche Faucet](https://faucet.avax.network/)
+---
 
-### Setup
+## 🛠️ Project Structure
 
+```
+AVApulse/
+├── LICENSE                    # MIT License (ElonCoding)
+├── README.md                  # Comprehensive documentation & architecture
+├── docs/                      # Technical specifications & design docs
+│   ├── ARCHITECTURE.md        # Deep dive into cryptographic ACL & wrapping
+│   ├── DEPLOYMENT_GUIDE.md    # Fuji deployment & configuration handbook
+│   ├── API_REFERENCE.md       # Smart contract interfaces and function specs
+│   └── SECURITY_MODEL.md      # Access control & confidential computation model
+├── deployments/
+│   └── avalanche-fuji.json    # Verified deployed addresses and deployment parameters
+├── code/
+│   ├── hardhat.config.js      # Hardhat config tuned for Avalanche Fuji (Solidity 0.8.35)
+│   ├── .env.example           # Environment template with prefilled live contract addresses
+│   ├── contracts/             # Solidity 0.8.35 smart contracts
+│   │   ├── ConfPayToken.sol   # ERC-7984 confidential wrapper
+│   │   ├── MockERC20.sol      # Test collateral token
+│   │   ├── PayrollManager.sol # Role management and auditor registry
+│   │   └── AvalancheNoxCompute.sol # Native Avalanche ACL & compute engine
+│   ├── scripts/               # Automation & deployment pipelines
+│   │   ├── deploy.js          # Main deploy script for Token & Wrapper
+│   │   ├── deploy-payroll.js  # PayrollManager deployment & seeding
+│   │   └── deploy-compute.js  # Native Avalanche compute deploy script
+│   └── frontend/              # React 19 + Vite 8 frontend dApp
+│       ├── src/
+│       │   ├── config/contracts.js # Contract ABIs and Avalanche Fuji addresses
+│       │   ├── services/avalancheHandle.js # Zero-gateway off-chain proof client
+│       │   ├── pages/         # Employer, Employee, Auditor dashboards
+│       │   └── context/WalletContext.jsx # Avalanche wallet provider
+│       └── scripts/test-live.mjs # 4-stage automated on-chain verification
+```
+
+---
+
+## 🚀 Quickstart Guide
+
+### 1. Prerequisites
+- Node.js ≥ 18
+- MetaMask configured for Avalanche Fuji Testnet
+- Test AVAX from the [Avalanche Faucet](https://faucet.avax.network/)
+
+### 2. Installation
 ```bash
-# Clone the repository
 git clone https://github.com/ElonCoding/AVApulse.git
-cd AVApulse
+cd AVApulse/code
 
-# Install smart contract dependencies
-cd code
-cp .env.example .env
-# Add your deployer private key to .env
+# Install contract dependencies
 npm install
 
 # Install frontend dependencies
@@ -98,106 +143,30 @@ cd frontend
 npm install
 ```
 
-### Run the Frontend
+### 3. Verification Suite
+Verify live Fuji contracts directly from your terminal:
+```bash
+cd code/frontend
+node scripts/test-live.mjs
+```
 
+### 4. Run Frontend Locally
 ```bash
 cd code/frontend
 npm run dev
 ```
-
-Open [http://localhost:5173](http://localhost:5173) and connect MetaMask to **Avalanche Fuji** (Chain ID: 43113).
-
-### Deploy Contracts (Optional)
-
-The contracts are already deployed on Avalanche Fuji. To redeploy:
-
-```bash
-cd code
-
-# Edit .env with your private key
-# PRIVATE_KEY=your_private_key_here
-
-npx hardhat run scripts/deploy.js --network avalancheFuji
-```
+Open `http://localhost:5173` and connect your MetaMask wallet on Avalanche Fuji.
 
 ---
 
-## Frontend Pages
+## 🔒 Security & Privacy Model
 
-| Route | Role | Description |
-|-------|------|-------------|
-| `/` | All | Landing page with contract addresses and architecture overview |
-| `/employer` | Employer | Wrap tokens, manage employees, batch pay, grant auditors |
-| `/employee` | Employee | View encrypted balance, decrypt, unwrap to ERC-20 |
-| `/auditor` | Auditor | Read-only view of disclosed payment handles with decrypt |
+- **Encrypted Salary Handles**: Salary amounts never hit the blockchain in plaintext. They exist only as 32-byte encrypted scalar handles.
+- **Role-Based Access Lists (ACL)**: `AvalancheNoxCompute` checks on-chain transient and persistent authorization before any handle can be transferred or decrypted.
+- **Selective Auditor Disclosure**: The employer can grant specific third-party auditors view access to historical payroll handles without leaking keys or exposing plaintext balances to other employees.
 
 ---
 
-## Tech Stack
+## 📄 License
 
-| Layer | Technology |
-|-------|-----------|
-| Smart Contracts | Solidity 0.8.28, Hardhat 2.x, OpenZeppelin 5.x |
-| Confidential Layer | iExec Nox Protocol, ERC-7984, `@iexec-nox/nox-confidential-contracts` |
-| Frontend | React 19, Vite 8, ethers.js 6, React Router 7 |
-| Encryption SDK | `@iexec-nox/handle` (ECIES + Intel TDX TEE) |
-| Network | Avalanche Fuji (Chain ID: 43113) |
-
----
-
-## Demo Flow
-
-| Time | Scene | What Happens |
-|------|-------|-------------|
-| 0:00–0:10 | Hook | Problem statement: "Salary payments on-chain are public" |
-| 0:10–0:40 | Wrap + Pay | Employer wraps 1000 mUSDC, pays 2 employees (500 + 300) with encrypted transfers |
-| 0:40–1:05 | Unwrap | Employee decrypts balance, unwraps with ~15s real TEE decryption |
-| 1:05–1:35 | Audit | Employer grants auditor → auditor decrypts both salaries (selective disclosure) |
-| 1:35–2:00 | Close | Summary + repo link |
-
----
-
-## Project Structure
-
-```
-AVApulse/
-├── code/
-│   ├── contracts/          # Solidity smart contracts
-│   │   ├── ConfPayToken.sol
-│   │   ├── PayrollManager.sol
-│   │   └── MockERC20.sol
-│   ├── scripts/            # Hardhat deploy scripts
-│   ├── frontend/           # Vite + React frontend
-│   │   └── src/
-│   │       ├── pages/      # Employer, Employee, Auditor, Home
-│   │       ├── components/ # Navbar, shared UI
-│   │       ├── config/     # Contract ABIs + addresses
-│   │       └── context/    # WalletContext (MetaMask integration)
-│   ├── hardhat.config.js
-│   └── package.json
-├── deployments/            # Contract addresses per network
-│   └── avalanche-fuji.json
-└── README.md
-```
-
----
-
-## Known Limitations
-
-- **ACL Revocation**: Nox does not support retroactive ACL revocation. Previously-granted handles remain accessible even after auditor removal from the roster.
-- **TEE Latency**: The unwrap flow requires ~15 seconds for Intel TDX TEE decryption. This is inherent to the Nox protocol, not a bug.
-- **Local Testing**: Encrypted operations (`euint256`, `Nox.fromExternal()`) require the live Nox Handle Gateway. Unit tests cover only non-encrypted logic paths.
-
----
-
-## Author
-
-**ElonCoding**
-
-Built with [iExec Nox Protocol](https://protocol.iex.ec/) and [ERC-7984 Confidential Tokens](https://eips.ethereum.org/EIPS/eip-7984)
-
----
-
-## License
-
-MIT
+MIT License. Copyright (c) 2026 **ElonCoding**. See [LICENSE](LICENSE) for details.
