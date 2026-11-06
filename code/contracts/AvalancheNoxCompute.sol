@@ -7,7 +7,7 @@ import {TEEType} from "@iexec-nox/nox-protocol-contracts/contracts/shared/TypeUt
 /**
  * @title AvalancheNoxCompute
  * @dev Avalanche Fuji native implementation of INoxCompute.
- * Enables ERC-7984 confidential payroll natively on Avalanche without Arbitrum dependency.
+ * Enables ERC-7984 confidential payroll natively on Avalanche natively on Avalanche.
  */
 contract AvalancheNoxCompute is INoxCompute {
     mapping(bytes32 => mapping(address => bool)) private _allowed;

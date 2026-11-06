@@ -40,7 +40,7 @@ This demonstrates the **core value proposition of confidential tokens**: privacy
 │                   FRONTEND (Vite + React + ethers v6)        │
 │                                                              │
 │  ┌────────────────┐  ┌────────────────┐  ┌──────────────┐   │
-│  │ 🏢 Employer    │  │ 👤 Employee    │  │ 🔍 Auditor   │   │
+│  │ 🏢 Employer    │  │ 👤 Employee   │  │ 🔍 Auditor   │   │
 │  │ - Wrap tokens  │  │ - Decrypt bal  │  │ - Decrypt    │   │
 │  │ - Batch pay    │  │ - Unwrap ERC20 │  │   payments   │   │
 │  │ - Grant audit  │  │                │  │ - Read-only  │   │

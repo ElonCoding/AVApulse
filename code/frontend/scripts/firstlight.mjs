@@ -4,7 +4,7 @@
  * Architecture: Employer calls ConfPayToken.confidentialTransfer directly,
  * then registers handles with PayrollManager.recordPayments for auditor access.
  * 
- * Tests 4 paths end-to-end against live Arbitrum Sepolia contracts.
+ * Tests 4 paths end-to-end against live Avalanche Fuji contracts.
  * Halt-on-fail. Results written to reports/phase-5a-firstlight.md in real-time.
  */
 
@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPORT_PATH = resolve(__dirname, '../../../reports/phase-5a-firstlight.md');
 
 // ─── Config ───────────────────────────────────────────────────────────
-const RPC = 'https://arbitrum-sepolia-rpc.publicnode.com';
+const RPC = 'https://api.avax-test.network/ext/bc/C/rpc';
 const EMPLOYER_KEY = '0xefe85d40ec364e6fa637232bc9ce2f60f5d7c586da090b50ca6b60dd72cd15ea';
 
 const ADDRESSES = {
@@ -89,7 +89,7 @@ function renderReport() {
 **Started:** 2026-04-30T04:22Z (T+15.4h of 48h, ~32%)
 **Time cap:** 60 min
 **Rule:** Halt on first failure. No silent patching.
-**Contracts:** Arbitrum Sepolia (421614)
+**Contracts:** Avalanche Fuji (43113)
 **Architecture:** Employer → ConfPayToken.confidentialTransfer (direct) → PayrollManager.recordPayments (bookkeeping)
 
 | Contract | Address |

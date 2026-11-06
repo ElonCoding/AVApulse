@@ -62,7 +62,7 @@ export default function Home() {
               </a>
             </li>
             <li className="tx-item">
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>VeilrollToken (ERC-7984)</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>ConfPayToken (ERC-7984)</span>
               <a
                 className="tx-hash"
                 href={`${EXPLORER_URL}/address/0x03D47783137398bafF49B441dF063016984234Fa`}
